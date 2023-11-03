@@ -46,7 +46,7 @@
                                                 <td>' . $l['descr'] . '</td>
                                                 <td>
                                                     <a href="'.BASE.'/cargos/gerenciar/' . $l['id'] . '" class="btn btn-primary" title="Gerenciar permissões"><i class="fas fa-wrench"></i></a>
-                                                    <a href="'.BASE.'/cargos/atualizar/' . $l['id'] . '" class="btn btn-primary" title="Gerenciar permissões"><i class="fas fa-pen"></i></a>
+                                                    <a href="'.BASE.'/cargos/atualizar/' . $l['id'] . '" class="btn btn-primary" title="Atualizar cadastro"><i class="fas fa-pen"></i></a>
                                                     <a class="btn btn-primary A_PergExcluirCargo" title="Excluir cargo" data-cargo="' . $l['id'] . '"><i class="fas fa-trash"></i></a>
                                                 </td>
                                             </tr>';

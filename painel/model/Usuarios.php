@@ -7,7 +7,8 @@ class Usuarios extends Dbasis {
      * @return array
      */
     public function listar() {
-        $read = Dbasis::read('usuarios');
+        $read = Dbasis::select('*,usuarios.id','usuarios','INNER JOIN cargos ON cargos.id = usuarios.cargo');
+        //$read = Dbasis::read('usuarios');
         if ($read->num_rows) {
             return $read;
         }else {

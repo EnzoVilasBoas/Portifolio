@@ -1,3 +1,4 @@
 .env
 .vscode/*
 painel/pages/*
+*.html
