@@ -127,4 +127,43 @@ class Dbasis{
         }
     }
 
+    /**
+	 * Método responsável pelo upload de imagens para o servidor
+	 * @param string $tmp
+	 * @param string $nome
+	 * @param int $widht
+	 * @param int $height
+	 * @param string $pasta
+	 */
+	public function uploadImage($tmp, $nome, $width, $height=NULL, $pasta){
+	
+		$ext  = pathinfo($pasta.$nome);
+		switch (strtolower($ext['extension'])){
+			case 'jpg'; $img = imagecreatefromjpeg($tmp);break;
+			case 'jpeg'; $img = imagecreatefromjpeg($tmp);break;
+			case 'png'; $img = imagecreatefrompng($tmp);break;
+			case 'gif'; $img = imagecreatefromgif($tmp);break;
+		}
+	
+		$x = imagesx($img);
+		$y = imagesy($img);
+		if ($height == NULL) {
+			$height = ($width * $y)/$x;
+		}
+		$nova = imagecreatetruecolor($width, $height);
+		imagealphablending($nova,false);
+		imagesavealpha ($nova,true);
+		imagecopyresampled($nova, $img, 0, 0, 0, 0, $width, $height, $x, $y);
+	
+		switch (strtolower($ext['extension'])){
+			case 'jpg';  imagejpeg($nova, $pasta.$nome, 100);break;
+			case 'jpeg'; imagejpeg($nova, $pasta.$nome, 100);break;
+			case 'png';  imagepng($nova, $pasta.$nome);break;
+			case 'gif';  imagegif($nova, $pasta.$nome);break;
+		}
+		imagedestroy($img);
+		imagedestroy($nova);
+	
+	}
+
 }

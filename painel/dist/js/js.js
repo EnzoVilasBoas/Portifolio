@@ -54,4 +54,48 @@ $(document).ready(function() {
     //
     //
     //
+
+    //
+    //USUARIOS
+    //
+
+        //Verificação da quantidade de digitos para cadastro da senha
+        $('body').on('keyup','#InputSenhaUm',function(){
+            var campoTexto = $("#InputSenhaUm").val();
+            var caracteresDigitados = campoTexto.length;
+
+            if (caracteresDigitados < 8) {
+                $("#AlertSenhaUm").removeClass("text-green");
+                $("#InputSenhaUm").removeClass("is-valid");
+                $("#AlertSenhaUm").addClass("text-danger");
+                $("#InputSenhaUm").addClass("is-invalid");
+            } else {
+                $("#AlertSenhaUm").removeClass("text-danger");
+                $("#InputSenhaUm").removeClass("is-invalid");
+                $("#AlertSenhaUm").addClass("text-green");
+                $("#InputSenhaUm").addClass("is-valid");
+            }
+        });
+
+        //Verificação da senha
+        $('body').on('keyup','#InputSenhaDois',function(){
+            var campoTexto1 = $("#InputSenhaUm").val();
+            var campoTexto2 = $("#InputSenhaDois").val();
+
+            if (campoTexto1 === campoTexto2) {
+                $("#AlertSenhaDois").removeClass("text-danger");
+                $("#InputSenhaDois").removeClass("is-invalid");
+                $("#AlertSenhaDois").addClass("text-green");
+                $("#InputSenhaDois").addClass("is-valid");
+            } else {
+                $("#AlertSenhaDois").removeClass("text-green");
+                $("#InputSenhaDois").removeClass("is-valid");
+                $("#AlertSenhaDois").addClass("text-danger");
+                $("#InputSenhaDois").addClass("is-invalid");
+            }
+        });
+    
+    //
+    //
+    //
 });
