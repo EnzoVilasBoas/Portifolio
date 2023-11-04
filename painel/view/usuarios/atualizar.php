@@ -26,15 +26,15 @@
                             <div class="card-tools">
                             </div>
                         </div>
-                        <form method="post">
+                        <form method="post" enctype="multipart/form-data">
                             <div class="card-body">
                                 <div class="form-group">
                                     <label for="InputNome">Nome</label>
-                                    <input type="text" class="form-control" id="InputNome" value="<?= $u['nome'] ?>" name="nome">
+                                    <input type="text" class="form-control" id="InputNome" value="<?= $u['nome'] ?>" name="nome" required>
                                 </div>
                                 <div class="form-group">
                                     <label for="InputEmail">Email</label>
-                                    <input type="email" class="form-control" id="InputEmail" value="<?= $u['email'] ?>" name="email">
+                                    <input type="email" class="form-control" id="InputEmail" value="<?= $u['email'] ?>" name="email" required>
                                 </div>
                                 <div class="form-group">
                                     <label for="SelectCargo">Cargo</label>
@@ -49,8 +49,13 @@
                                 </div>
                                 <div class="form-group">
                                     <label>Avatar</label>
+                                    <?php
+                                        if ($u['avatar']) {
+                                            echo '<p><img src="'.BASE.'/uploads/avatar/'.$u['avatar'].'" widht="128"></p>';
+                                        }
+                                    ?>
                                     <div class="custom-file">
-                                        <input type="hidden" class="custom-file-input" id="customFile" name="avatarOld" value="<?= $u['avatar'] ?>">
+                                        <input type="hidden" name="avatarOld" value="<?= $u['avatar'] ?>">
                                         <input type="file" class="custom-file-input" id="customFile" name="avatar">
                                         <label class="custom-file-label" for="customFile">Selecione um avatar</label>
                                     </div>
@@ -61,8 +66,8 @@
                                     <span id="AlertSenhaUm">*A senha deve ter mais de 8 caracteres</span>
                                 </div>
                                 <div class="form-group">
-                                    <label for="InputSenhaDois">Confirme sua senha</label>
-                                    <input type="hidden" class="form-control" id="InputSenhaDois" value="<?= $u['senha'] ?>" name="senhaOld">
+                                    <label for="InputSenhaDois">Confirme a senha</label>
+                                    <input type="hidden" value="<?= $u['senha'] ?>" name="senhaOld">
                                     <input type="password" class="form-control" id="InputSenhaDois" placeholder="Confirme sua nova senha" name="senha2">
                                     <span id="AlertSenhaDois">*As senhas devem coincidir</span>
                                 </div>

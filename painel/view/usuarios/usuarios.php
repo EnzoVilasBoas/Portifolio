@@ -76,15 +76,15 @@
                             <div class="card-body">
                                 <div class="form-group">
                                     <label for="InputNome">Nome</label>
-                                    <input type="text" class="form-control" id="InputNome" placeholder="Nome" name="nome">
+                                    <input type="text" class="form-control" id="InputNome" placeholder="Nome" name="nome" required>
                                 </div>
                                 <div class="form-group">
                                     <label for="InputEmail">Email</label>
-                                    <input type="email" class="form-control" id="InputEmail" placeholder="Email" name="email">
+                                    <input type="email" class="form-control" id="InputEmail" placeholder="Email" name="email" required>
                                 </div>
                                 <div class="form-group">
                                     <label for="SelectCargo">Cargo</label>
-                                    <select class="form-control" name="cargo" id="SelectCargo">
+                                    <select class="form-control" name="cargo" id="SelectCargo" required>
                                         <option disabled selected>Selecione um cargo</option>
                                         <?php
                                             foreach ($cargos as $c) {
@@ -102,12 +102,12 @@
                                 </div>
                                 <div class="form-group">
                                     <label for="InputSenhaUm">Senha</label>
-                                    <input type="password" class="form-control" id="InputSenhaUm" placeholder="Senha" name="senha1">
+                                    <input type="password" class="form-control" id="InputSenhaUm" placeholder="Senha" name="senha1" required>
                                     <span id="AlertSenhaUm">*A senha deve ter mais de 8 caracteres</span>
                                 </div>
                                 <div class="form-group">
-                                    <label for="InputSenhaDois">Confirme sua senha</label>
-                                    <input type="password" class="form-control" id="InputSenhaDois" placeholder="Confirme sua senha" name="senha2">
+                                    <label for="InputSenhaDois">Confirme a senha</label>
+                                    <input type="password" class="form-control" id="InputSenhaDois" placeholder="Confirme sua senha" name="senha2" required>
                                     <span id="AlertSenhaDois">*As senhas devem coincidir</span>
                                 </div>
                             </div>

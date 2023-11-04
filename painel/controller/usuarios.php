@@ -78,7 +78,27 @@
         case 'atualizar':
             if ($parametro) {
                 if ($post) {
-                    # code...
+                    $up = $us->atualiza($parametro,$post);
+                    switch ($up) {
+                        case 2:
+                            $msg = '
+                            <div class="alert alert-success" role="alert">
+                                Usuario atualizado com sucesso.
+                            </div>';
+                            break;
+                        case 1:
+                            $msg = '
+                            <div class="alert alert-warning" role="alert">
+                                As senhas não coicidem
+                            </div>';
+                            break;
+                        default:
+                            $msg = '
+                            <div class="alert alert-danger" role="alert">
+                                ERRO! Tente novamente ou entre em contato com o suporte.
+                            </div>';
+                            break;
+                    }
                 }
                 $u = $us->retorna($parametro);
                 $cargos = $cg->lista();
@@ -98,7 +118,7 @@
                     case 2:
                         $msg = '
                         <div class="alert alert-warning" role="alert">
-                            As senhas mão coicidem
+                            As senhas não coicidem
                         </div>';
                         break;
                     case 1:
