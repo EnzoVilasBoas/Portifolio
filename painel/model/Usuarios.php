@@ -18,11 +18,12 @@ class Usuarios extends Dbasis {
 
     /**
      * Método responsavel por retornar os dados do usuario
-     * @param int $id
+     * @param int $id 
      * @return array
      */
     public function retorna($id) {
-        $read = Dbasis::read('usuarios'."id = $id");
+        $read = Dbasis::select('*,usuarios.id,cargos.id as cargoId','usuarios','INNER JOIN cargos ON cargos.id = usuarios.cargo WHERE usuarios.id = "'.$id.'"');
+        //$read = Dbasis::read('usuarios',"id = $id");
         if ($read->num_rows) {
             foreach ($read as $r);
             return $r;
@@ -70,4 +71,24 @@ class Usuarios extends Dbasis {
             }
         }
     }
+    
+    /**
+     * Método responsavel por excluir usuarios
+     * @param int $id
+     * @return int
+     */
+    public function excluirUsuario($id) {
+        $verf = Dbasis::read('usuarios',"id = $id");
+        if ($verf->num_rows) {
+            $del = Dbasis::delete('usuarios',"id = $id");
+            if ($del) {
+                return 1;
+            }else {
+                return 0;
+            }
+        }else {
+            return 0;
+        }
+    }
+
 }

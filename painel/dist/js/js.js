@@ -59,6 +59,35 @@ $(document).ready(function() {
     //USUARIOS
     //
 
+        /**
+         * Retorna questionario de exclusão do usuario
+         */
+        $('body').on('click', '.A_PergExcluirUsuario', function () {
+            var user = $(this).attr('data-usuario');
+            $.post(BASE + '/usuarios/excluir/verf/api', { user: user }, function (info) {
+                if (info) {
+                    $('.A_usuarioModal').html(info);
+                    $('.A_usuarioModal'+user).modal('show');
+                }
+            });
+            return false;
+        });
+
+        /**
+         * Confirma a exclusão do usuario
+         */
+        $('body').on('click', '.A_excluirUsuario', function () {
+            var user = $(this).attr('data-usuario');
+            $.post(BASE + '/usuarios/excluir/api', { user: user }, function (info) {
+                if (info) {
+                    $('.A_usuarioMsg').html(info);
+                    $('#A_usuario'+user).fadeOut('fast');
+                }
+            });
+            return false;
+        });
+
+
         //Verificação da quantidade de digitos para cadastro da senha
         $('body').on('keyup','#InputSenhaUm',function(){
             var campoTexto = $("#InputSenhaUm").val();

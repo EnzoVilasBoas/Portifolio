@@ -41,14 +41,14 @@
                                         <?php
                                         foreach ($lista as $l) {
                                             echo '
-                                            <tr id="A_cargo' . $l['id'] . '">
+                                            <tr id="A_usuario' . $l['id'] . '">
                                                 <td>' . $l['id'] . '</td>
                                                 <td>' . $l['nome'] . '</td>
                                                 <td>' . $l['email'] . '</td>
                                                 <td>' . $l['cargo'] . '</td>
                                                 <td>
                                                     <a href="'.BASE.'/usuarios/atualizar/' . $l['id'] . '" class="btn btn-primary" title="Atualizar cadastro"><i class="fas fa-pen"></i></a>
-                                                    <a class="btn btn-primary A_PergExcluirUsuario" title="Excluir usuario" data-cargo="' . $l['id'] . '"><i class="fas fa-trash"></i></a>
+                                                    <a class="btn btn-primary A_PergExcluirUsuario" title="Excluir usuario" data-usuario="' . $l['id'] . '"><i class="fas fa-trash"></i></a>
                                                 </td>
                                             </tr>';
                                         }
