@@ -111,8 +111,8 @@
                         </ul>
                     </li>
                     <li class="nav-item">
-                        <a href="#" class="nav-link">
-                            <i class="nav-icon fa fa-users"></i>
+                        <a href="<?= BASE ?>/trabalhos" class="nav-link">
+                            <i class="nav-icon fa fa-inbox"></i>
                             <p>Trabalhos</p>
                         </a>
                     </li>

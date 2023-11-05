@@ -127,4 +127,14 @@ $(document).ready(function() {
     //
     //
     //
+
+    //
+    //Trabalhos
+    //
+        
+        $('#TrabalhoDesc').summernote({
+            placeholder: 'Descrição do projeto',
+            tabsize: 2,
+            height: 300
+        });
 });
