@@ -1,3 +1,38 @@
+<style>
+    .A_caixaImagem{
+        display: flex;
+        flex-wrap: wrap;
+        flex-direction: row;
+        align-items: center;
+        justify-content: space-evenly;
+        align-content: space-around;
+    }
+    .A_imagem {
+        background-color: rgba(0, 0, 0);
+        display: flex;
+        justify-content: center;
+        align-items: center;
+    }
+    .A_lupa {
+        background: black;
+        opacity: 0%;
+        width: 128px;
+        height: 72px;
+        position: absolute;
+        display: flex;
+        justify-content: center;
+        align-items: center;
+        cursor: pointer;
+    }
+    .A_lupa i {
+        opacity: 100%;
+        color: white;
+        font-size: 22px;
+    }
+    .A_lupa:hover{
+        opacity: 50%;
+    }
+</style>
 <div class="content-wrapper">
     <section class="content-header">
         <div class="container-fluid">
@@ -55,12 +90,21 @@
                                 </div>
                             </div>
                             <div class="card-body p-0">
-                                <div class="row">
+                                <div class="A_caixaImagem p-3">
                                     <?php
+                                        /* foreach ($lista as $l) {
+                                            echo '
+                                            <div class="col-sm-2 A_imagem" id="A_imagem'.$l['id'].'">
+                                                <img src="'.BASE.'/uploads/galeria/'.$l['imagem'].'" class="img-fluid A_imagemAbrir" data-img="'.$l['id'].'" alt="'.$t['trabalho'].'"/>
+                                            </div>';
+                                        } */
                                         foreach ($lista as $l) {
                                             echo '
-                                            <div class="col-sm-2">
-                                                <img src="'.BASE.'/uploads/galeria/'.$l['imagem'].'" class="img-fluid mb-2" alt="'.$t['trabalho'].'"/>
+                                            <div class="A_imagem" id="A_imagem'.$l['id'].'">
+                                                <div class="A_lupa A_imagemAbrir" data-img="'.$l['id'].'">
+                                                    <i class="fas fa-search-plus"></i>
+                                                </div>
+                                                <img src="'.BASE.'/uploads/galeria/'.$l['imagem'].'" alt="'.$t['trabalho'].'" width="128"/>
                                             </div>';
                                         }
                                     ?>
@@ -77,4 +121,4 @@
         </div><!-- /.container-fluid -->
     </section>
 </div>
-<div class="A_cargoModal"></div>
+<div class="A_galeriaModal"></div>

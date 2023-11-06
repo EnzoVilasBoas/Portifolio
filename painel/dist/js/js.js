@@ -132,10 +132,39 @@ $(document).ready(function() {
     //Trabalhos
     //
         
+        //Ampliar a imagem da galeria
+        $('body').on('click', '.A_imagemAbrir', function () {
+            var img = $(this).attr('data-img');
+            $.post(BASE + '/trabalhos/galeria/abrir/api', { img: img }, function (info) {
+                if (info) {
+                    $('.A_galeriaModal').html(info);
+                    $('.A_galeriaModal'+img).modal('show');
+                }
+            });
+            return false;
+        });
+
+        //Excluir imagem da galeria
+        $('body').on('click', '.A_excluirImagem', function () {
+            var img = $(this).attr('data-img');
+            $.post(BASE + '/trabalhos/galeria/excluir/api', { img: img }, function (info) {
+                if (info) {
+                    $('.A_galeriaMsg').html(info);
+                    $('#A_imagem'+img).fadeOut('fast');
+
+                }
+            });
+            return false;
+        });
+        
         //Função para ativação do summernote
         $('#TrabalhoDesc').summernote({
             placeholder: 'Descrição do projeto',
             tabsize: 2,
             height: 300
         });
+    
+    //
+    //
+    //
 });
