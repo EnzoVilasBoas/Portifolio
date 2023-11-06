@@ -9,7 +9,30 @@
     switch ($acao) {
         case 'galeria':
             if ($parametro) {
-                # code...
+                $t = $wk->retorna($parametro);
+                if ($t) {
+                    if ($_FILES) {
+                        $cad = $wk->cadastraGaleria($parametro);
+                        switch ($cad) {
+                            case 1:
+                                $msg = '
+                                <div class="alert alert-success" role="alert">
+                                    Imgagens cadastradas com sucesso!
+                                </div>';
+                                break;
+                            default:
+                                $msg = '
+                                <div class="alert alert-danger" role="alert">
+                                    ERRO! Tente novamente ou entre em contato com o suporte.
+                                </div>';
+                                break;
+                        }
+                    }
+                    $lista = $wk->retornaGaleria($parametro);
+                    require_once('view/trabalhos/galeria.php');
+                }else {
+                    require_once('view/404.php');
+                }
             }
             break;
         

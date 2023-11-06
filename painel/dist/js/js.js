@@ -132,6 +132,7 @@ $(document).ready(function() {
     //Trabalhos
     //
         
+        //Função para ativação do summernote
         $('#TrabalhoDesc').summernote({
             placeholder: 'Descrição do projeto',
             tabsize: 2,

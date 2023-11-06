@@ -72,7 +72,7 @@
                             <div class="card-tools">
                             </div>
                         </div>
-                        <form method="post">
+                        <form method="post" enctype="multipart/form-data">
                             <div class="card-body">
                                 <div class="form-group">
                                     <label for="InputNome">Nome</label>

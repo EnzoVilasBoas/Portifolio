@@ -212,12 +212,15 @@ class Dbasis{
                 case 'jpg':
                 case 'jpeg':
                     imagejpeg($nova, $pasta.$nome, 100);
+                    echo $nome;
                     break;
                 case 'png':
                     imagepng($nova, $pasta.$nome);
+                    echo $nome;
                     break;
                 case 'gif':
                     imagegif($nova, $pasta.$nome);
+                    echo $nome;
                     break;
             }
 
