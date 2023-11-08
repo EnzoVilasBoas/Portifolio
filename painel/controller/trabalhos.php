@@ -87,7 +87,29 @@
                     break;
             }
             break;
-        
+        case 'atualizar':
+            if ($parametro) {
+                if ($post) {
+                    $up = $wk->atualiza($parametro,$post);
+                    switch ($up) {
+                        case 1:
+                            $msg = '
+                            <div class="alert alert-success" role="alert">
+                                Trabalho atualizado com sucesso!
+                            </div>';
+                            break;
+                        default:
+                            $msg = '
+                            <div class="alert alert-danger" role="alert">
+                                ERRO! Tente novamente ou entre em contato com o suporte.
+                            </div>';
+                            break;
+                    }
+                }
+                $t = $wk->retorna($parametro);
+                require_once('view/trabalhos/atualizar.php');
+            }
+            break;
         default:
             if ($post) {
                 $cad = $wk->cadastro($post);

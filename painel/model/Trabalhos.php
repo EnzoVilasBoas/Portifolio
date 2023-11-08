@@ -54,6 +54,30 @@ class Trabalhos extends Dbasis {
     }
 
     /**
+     * Método responsavel por atualizar os dados do trabalho
+     * @param int $id ID do trabalho
+     * @param array $post POST da atualização do trabalho
+     */
+    public function atualiza($trabalho,$post) {
+        $verf = Dbasis::read("trabalhos","id = $trabalho");
+        if ($verf->num_rows) {
+            $dados = [
+                "trabalho"  => $post['trabalho'],
+                "tags"      => $post['tags'],
+                "descr"     => $post['descr'],
+            ];
+            $up = Dbasis::update("trabalhos",$dados,"id = $trabalho");
+            if ($up) {
+                return 1;
+            }else {
+                return 0;
+            }
+        }else {
+            return 0;
+        }
+    }
+
+    /**
      * Método responsavel por retornar as imagens da galeria
      * @param int $id ID do trabalho
      * @return array
