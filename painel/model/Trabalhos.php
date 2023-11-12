@@ -55,8 +55,9 @@ class Trabalhos extends Dbasis {
 
     /**
      * Método responsavel por atualizar os dados do trabalho
-     * @param int $id ID do trabalho
+     * @param int $trabalho ID do trabalho
      * @param array $post POST da atualização do trabalho
+     * @return int
      */
     public function atualiza($trabalho,$post) {
         $verf = Dbasis::read("trabalhos","id = $trabalho");
@@ -78,9 +79,32 @@ class Trabalhos extends Dbasis {
     }
 
     /**
+     * Método responsavel por excluir o trabalho
+     * @param int $trabalho ID do trabalho
+     * @return int
+     */
+    public function excluir($trabalho) {
+        $verf = Dbasis::read("trabalhos","id = $trabalho");
+        if ($verf->num_rows) {
+            $del =  Dbasis::delete("trabalhos","id = $trabalho");
+            if ($del) {
+                $galeria = $this->retornaGaleria($trabalho);
+                if ($galeria->num_rows) {
+                        $this->excluirGaleria($trabalho);
+                }
+                return 1;
+            }else {
+                return 0;
+            }
+        }else {
+            return 0;
+        }
+    }
+
+    /**
      * Método responsavel por retornar as imagens da galeria
      * @param int $id ID do trabalho
-     * @return array
+     * @return array/int
      */
     public function retornaGaleria($id) {
         $read = Dbasis::read("galeria","trabalho = $id");
@@ -161,6 +185,24 @@ class Trabalhos extends Dbasis {
             }
         }else {
             return 0;
+        }
+    }
+
+    /**
+     * Método responsavel por excluir a galeria de um trabalho
+     * @param int $trabalho ID do trabalho proprietario da galeria
+     */
+    public function excluirGaleria($trabalho) {
+        $verf = Dbasis::read("galeria","trabalho = $trabalho");
+        if ($verf->num_rows) {
+            foreach ($verf as $v) {
+                $img = "uploads/galeria/".$v['imagem'];
+                if (file_exists($img)) {
+                    if (unlink($img)) {
+                        $del = Dbasis::delete("galeria",'id = "'.$v['id'].'"');
+                    }
+                }
+            }
         }
     }
 

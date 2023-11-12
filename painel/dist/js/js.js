@@ -156,6 +156,32 @@ $(document).ready(function() {
             });
             return false;
         });
+
+        //Questiona a exclusão do trabalho
+            $('body').on('click', '.A_PergExcluirTrabalho', function () {
+            var wk = $(this).attr('data-wk');
+            $.post(BASE + '/trabalhos/excluir/verf/api', { wk: wk }, function (info) {
+                if (info) {
+                    $('.A_trabalhoModal').html(info);
+                    $('.A_trabalhoModal'+wk).modal('show');
+
+                }
+            });
+            return false;
+        });
+
+        //Questiona a exclusão do trabalho
+        $('body').on('click', '.A_excluirTrabalho', function () {
+            var wk = $(this).attr('data-wk');
+            $.post(BASE + '/trabalhos/excluir/api', { wk: wk }, function (info) {
+                if (info) {
+                    $('.A_trabalhoMsg').html(info);
+                    $('#A_trabalho'+wk).fadeOut('fast');
+
+                }
+            });
+            return false;
+        });
         
         //Função para ativação do summernote
         $('#TrabalhoDesc').summernote({

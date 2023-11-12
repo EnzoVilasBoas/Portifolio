@@ -47,7 +47,7 @@
                                                 <td>
                                                     <a href="'.BASE.'/trabalhos/galeria/' . $l['id'] . '" class="btn btn-primary" title="Gerenciar galeria"><i class="fas fa-image"></i></a>
                                                     <a href="'.BASE.'/trabalhos/atualizar/' . $l['id'] . '" class="btn btn-primary" title="Atualizar cadastro"><i class="fas fa-pen"></i></a>
-                                                    <a class="btn btn-primary A_PergExcluirTrabalho" title="Excluir trabalho" data-cargo="' . $l['id'] . '"><i class="fas fa-trash"></i></a>
+                                                    <a class="btn btn-primary A_PergExcluirTrabalho" title="Excluir trabalho" data-wk="' . $l['id'] . '"><i class="fas fa-trash"></i></a>
                                                 </td>
                                             </tr>';
                                         }
@@ -94,4 +94,4 @@
         </div><!-- /.container-fluid -->
     </section>
 </div>
-<div class="A_cargoModal"></div>
+<div class="A_trabalhoModal"></div>

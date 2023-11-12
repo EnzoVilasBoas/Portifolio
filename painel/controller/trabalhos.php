@@ -110,6 +110,77 @@
                 require_once('view/trabalhos/atualizar.php');
             }
             break;
+        case 'excluir':
+            if ($parametro == "verf") {
+                if ($post) {
+                    $t = $wk->retorna($post['wk']);
+                    $verf = $wk->retornaGaleria($post['wk']);
+                    if ($verf->num_rows) {
+                        echo '
+                        <div class="modal fade A_trabalhoModal'.$t['id'].'" >
+                            <div class="modal-dialog">
+                                <div class="modal-content">
+                                    <div class="modal-header">
+                                        <h4 class="modal-title">Excluir <span class="alert-link">'.$t['trabalho'].'</span></h4>
+                                        <button type="button" class="close" data-dismiss="modal" aria-label="Close">
+                                            <span aria-hidden="true">&times;</span>
+                                        </button>
+                                    </div>
+                                    <div class="modal-body">
+                                        <p>Este trabalho possui imagens viculadas, a exclusão dele resultara na exclusão das imagens.</p>
+                                        <p>Deseja prosseguir com essa ação?</p>
+                                    </div>
+                                    <div class="modal-footer justify-content-between">
+                                        <button type="button" class="btn btn-default" data-dismiss="modal">Cancelar</button>
+                                        <button type="button" class="btn btn-primary A_excluirTrabalho" data-dismiss="modal" data-wk="' . $t['id'] . '">Prosseguir</button>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>';
+                    }else {
+                        echo '
+                        <div class="modal fade A_trabalhoModal'.$t['id'].'" >
+                            <div class="modal-dialog">
+                                <div class="modal-content">
+                                    <div class="modal-header">
+                                        <h4 class="modal-title">Excluir <span class="alert-link">'.$t['trabalho'].'</span></h4>
+                                        <button type="button" class="close" data-dismiss="modal" aria-label="Close">
+                                            <span aria-hidden="true">&times;</span>
+                                        </button>
+                                    </div>
+                                    <div class="modal-body">
+                                        <p>Você está prestes a excluir todos os dados relacionados a este trabalho!</p>
+                                        <p>Deseja prosseguir com essa ação?</p>
+                                    </div>
+                                    <div class="modal-footer justify-content-between">
+                                        <button type="button" class="btn btn-default" data-dismiss="modal">Cancelar</button>
+                                        <button type="button" class="btn btn-primary A_excluirTrabalho" data-dismiss="modal" data-wk="' . $t['id'] . '">Prosseguir</button>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>';
+                    }
+                }
+            }else {
+                if ($post) {
+                    $del = $wk->excluir($post['wk']);
+                    switch ($del) {
+                        case 1:
+                            echo '
+                            <div class="alert alert-success" role="alert">
+                                Trabalho excluido com sucesso!
+                            </div>';
+                            break;
+                        default:
+                            echo '
+                            <div class="alert alert-danger" role="alert">
+                                ERRO! Tente novamente ou entre em contato com o suporte.
+                            </div>';
+                            break;
+                    }
+                }
+            }
+            break;
         default:
             if ($post) {
                 $cad = $wk->cadastro($post);
